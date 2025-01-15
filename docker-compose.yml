@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  couchbase:
+    image: couchbase:community
+    container_name: couchbase
+    ports:
+      - "8091-8094:8091-8094"
+      - "11210:11210"
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=admin
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+    volumes:
+      - couchbase_data:/opt/couchbase/var
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.1
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - ./create-index.sh:/usr/share/elasticsearch/create-index.sh
+    #entrypoint: [ "/bin/bash", "/usr/share/elasticsearch/create-index.sh" ]
+    depends_on:
+      - couchbase
+
+  cbes:
+    image: couchbase/elasticsearch-connector
+    container_name: couchbase-elasticsearch-connector
+    depends_on:
+      - couchbase
+      - elasticsearch
+    environment:
+      - CBES_CLUSTER_ADDRESS=couchbase
+      - CBES_USERNAME=admin
+      - CBES_PASSWORD=password
+      - CBES_BUCKET=news
+      - CBES_ELASTICSEARCH_HOST=http://elasticsearch:9200
+      - LOG4J_CONFIGURATION_FILE=/opt/couchbase-elasticsearch-connector/config/log4j2.xml
+    volumes:
+      - ./cbes/config:/opt/couchbase-elasticsearch-connector/config
+      - ./cbes/logs:/opt/couchbase-elasticsearch-connector/logs
+
+volumes:
+  couchbase_data:
+    driver: local

@@ -1,0 +1,12 @@
+couchbase:
+  host: 'localhost'
+  username: admin
+  password: password
+  bucket: 'news'
+
+elasticsearch:
+  url: http://elasticsearch:9200
+
+server:
+  host: 'localhost'
+  port: 5043

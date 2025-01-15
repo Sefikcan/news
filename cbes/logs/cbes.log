@@ -1,0 +1,401 @@
+2025-01-15 17:50:07 INFO  ElasticsearchConnector:103 - Couchbase Elasticsearch Connector version 4.4.11
+2025-01-15 17:50:07 WARN  ConfigHelper:163 - The `typeName` config property is DEPRECATED, since Elasticsearch no longer has the concept of document types. Please remove the property from your config file; a future version of the connector will reject it as invalid.
+2025-01-15 17:50:07 INFO  ElasticsearchConnector:180 - Read configuration: ConnectorConfig{couchbase=CouchbaseConfig{hosts=[couchbase://couchbase:8091], network=auto, username=admin, bucket=news, metadataBucket=news, metadataCollection=_default._default, collections=[], secureConnection=false, hostnameVerification=true, dcp=DcpConfig{compression=ENABLED, persistencePollingInterval=PT0.1S, flowControlBuffer=134217728 bytes, connectTimeout=PT10S}, clientCert=ClientCertConfig{use=false, path=}, env={}}, elasticsearch=ElasticsearchConfig{hosts=[http://elasticsearch:9200], username=, secureConnection=false, clientCert=ClientCertConfig{use=false, path=}, bulkRequest=BulkRequestConfig{maxActions=2000, maxBytes=20971520 bytes, concurrentRequests=10, timeout=PT1M}, docStructure=DocStructureConfig{documentContentAtTopLevel=true, wrapCounters=false}, types=[TypeConfig{index=news, pipeline=news-transform-pipeline, ignore=false, ignoreDeletes=false, matchOnQualifiedKey=false, matcher=prefix=''; qualifiedKey=false}], rejectLog=RejectLogConfig{}, elasticCloud=ElasticCloudConfig{enabled=false}, aws=AwsConfig{region=}}, logging=LoggingConfig{logDocumentLifecycle=false, redactionLevel=NONE}, metrics=MetricsConfig{logInterval=PT1M, httpPort=31415}, group=GroupConfig{name=news-app, staticMembership=1/1}}
+2025-01-15 17:50:07 INFO  ElasticsearchConnector:181 - Couchbase CA certificate(s): n/a
+2025-01-15 17:50:07 INFO  ElasticsearchConnector:182 - Elasticsearch CA certificate(s): n/a
+2025-01-15 17:50:07 INFO  DocumentLifecycle:63 - Document lifecycle milestones will be logged to this category at DEBUG level.
+2025-01-15 17:50:07 INFO  ElasticsearchVersionSniffer:154 - Getting sink flavor and version from http://elasticsearch:9200
+2025-01-15 17:50:07 INFO  ElasticsearchVersionSniffer:107 - Detected sink: Elasticsearch 8.10.1
+2025-01-15 17:50:07 INFO  KeyStoreHelper:85 - Since no Certificate Authority (CA) certificate(s) were specified for Elasticsearch, the connector will trust the well-known CAs in the JVM's 'cacerts' trust store. If the Elasticsearch service uses a private CA, make sure to configure the 'pathToCaCertificate' connector config property, or add the CA certificate to `cacerts`.
+2025-01-15 17:50:07 INFO  ElasticsearchHelper:92 - Elasticsearch client connect timeout = 5000ms; socket timeout=63000ms
+2025-01-15 17:50:07 INFO  SinkOps:96 - Verifying connectivity to Elasticsearch...
+2025-01-15 17:50:07 INFO  SinkOps:98 - Successfully connected to Elasticsearch. Sink info: {"name":"801185b47995","cluster_name":"docker-cluster","cluster_uuid":"zpS3Ui_8R9SLW-yJJRiFCg","version":{"number":"8.10.1","build_flavor":"default","build_type":"docker","build_hash":"a94744f97522b2b7ee8b5dc13be7ee11082b8d6b","build_date":"2023-09-14T20:16:27.027355296Z","build_snapshot":false,"lucene_version":"9.7.0","minimum_wire_compatibility_version":"7.17.0","minimum_index_compatibility_version":"7.0.0"},"tagline":"You Know, for Search"}
+2025-01-15 17:50:07 INFO  DefaultConfigurationProvider:234 - Resolved seed nodes: [SeedNode{address='couchbase', mgmtPort=8091}]
+2025-01-15 17:50:07 INFO  SnappyHelper:41 - Using fast Snappy compression codec because this is little-endian hardware and `sun.misc.Unsafe` is accessible.
+2025-01-15 17:50:07 INFO  core:129 - [com.couchbase.core][CoreCreatedEvent] {"clientVersion":"3.7.6","clientGitHash":"e35e002c","coreVersion":"3.7.6","coreGitHash":"e35e002c","userAgent":"couchbase-java/3.7.6 (Linux 6.6.12-linuxkit aarch64; OpenJDK 64-Bit Server VM 17.0.13+11-LTS)","maxNumRequestsInRetry":32768,"ioEnvironment":{"nativeIoEnabled":true,"eventLoopThreadCount":4,"eventLoopGroups":["EpollEventLoopGroup"]},"ioConfig":{"captureTraffic":[],"mutationTokensEnabled":true,"networkResolution":"auto","dnsSrvEnabled":true,"tcpKeepAlivesEnabled":true,"tcpKeepAliveTimeMs":60000,"configPollIntervalMs":2500,"kvCircuitBreakerConfig":"disabled","queryCircuitBreakerConfig":"disabled","viewCircuitBreakerConfig":"disabled","searchCircuitBreakerConfig":"disabled","analyticsCircuitBreakerConfig":"disabled","managerCircuitBreakerConfig":"disabled","eventingCircuitBreakerConfig":"disabled","backupCircuitBreakerConfig":"disabled","numKvConnections":1,"maxHttpConnections":12,"idleHttpConnectionTimeoutMs":1000,"configIdleRedialTimeoutMs":300000,"memcachedHashingStrategy":"StandardMemcachedHashingStrategy","timerConfig":{"numTimers":1,"tickDurationMs":10,"numBuckets":512}},"compressionConfig":{"enabled":true,"minRatio":0.83,"minSize":32},"securityConfig":{"tlsEnabled":false,"nativeTlsEnabled":true,"hostnameVerificationEnabled":true,"trustCertificates":null,"trustManagerFactory":null,"ciphers":[]},"timeoutConfig":{"kvMs":2500,"kvDurableMs":10000,"kvScanMs":75000,"managementMs":75000,"queryMs":75000,"viewMs":75000,"searchMs":75000,"analyticsMs":75000,"connectMs":10000,"disconnectMs":10000,"eventingMs":75000,"backupMs":75000},"loggerConfig":{"diagnosticContextEnabled":false},"orphanReporterConfig":{"emitIntervalMs":10000,"sampleSize":10,"queueLength":1024,"enabled":true},"thresholdLoggingTracerConfig":{"enabled":true,"emitIntervalMs":10000,"sampleSize":10,"queueLength":1024,"kvThresholdMs":500,"queryThresholdMs":1000,"searchThresholdMs":1000,"analyticsThresholdMs":1000,"viewThresholdMs":1000,"transactionsThresholdMs":5000},"loggingMeterConfig":{"enabled":true,"emitIntervalMs":600000},"retryStrategy":"BestEffortRetryStrategy","requestTracer":"ThresholdLoggingTracer","meter":"LoggingMeter","numRequestCallbacks":0,"scheduler":"ParallelScheduler","schedulerThreadCount":8,"transactionsConfig":{"durabilityLevel":"MAJORITY","timeoutMs":15000,"cleanupConfig":{"runLostAttemptsCleanupThread":true,"runRegularAttemptsCleanupThread":true,"cleanupWindowMs":60000,"cleanupSet":""},"numAtrs":1024,"metadataCollection":"none","scanConsistency":"none"}} {"connectionString":"couchbase://couchbase:8091=manager","coreId":"0x2d458daf00000001","numCoreInstances":1}
+2025-01-15 17:50:07 INFO  transactions:129 - [com.couchbase.transactions][TransactionsStartedEvent] Transactions successfully initialised, regular cleanup enabled=true, lost cleanup enabled=true
+2025-01-15 17:50:07 INFO  node:129 - [com.couchbase.node][NodeCreatedEvent] Node created {"coreId":"0x2d458daf00000001","managerPort":"8091","remote":"couchbase"}
+2025-01-15 17:50:07 INFO  core:129 - [com.couchbase.core][BucketOpenedEvent][191ms] Opened bucket "news" {"coreId":"0x2d458daf00000001"}
+2025-01-15 17:50:08 INFO  Client:212 - Using Netty epoll native transport.
+2025-01-15 17:50:08 INFO  Client:207 - Environment Configuration Used: ClientEnvironment{connectionString=couchbase://couchbase:11210, connectionNameGenerator=DefaultConnectionNameGenerator{userAgent='elasticsearch-connector/4.4.11 (news-app) java-dcp-client/0.52.0 Java/17.0.13 (Red Hat, Inc.; OpenJDK 64-Bit Server VM; 17.0.13+11-LTS) OS (Linux; 6.6.12-linuxkit; aarch64)'}, bucket='news', collectionsAware=true, collectionIds=[], collectionNames=[], scopeId=OptionalLong.empty, scopeName=Optional.empty, dcpControl=DcpControl{{connection_buffer_size=134217728, set_noop_interval=20, enable_noop=true}}, eventLoopGroup=EpollEventLoopGroup, eventLoopGroupIsPrivate=true, poolBuffers=true, bufferAckWatermark=60, bootstrapTimeout=PT10S, configRefreshInterval=PT2S, securityConfig={tlsEnabled=false, nativeTlsEnabled=true, hostnameVerificationEnabled=true, hasTrustCertificates=false, trustManagerFactory=null}}
+2025-01-15 17:50:08 INFO  Client:474 - Connecting to seed nodes and bootstrapping bucket news.
+2025-01-15 17:50:08 INFO  Conductor:471 - Adding DCP Channel against couchbase:11210
+2025-01-15 17:50:08 INFO  DcpConnectHandler:84 - [id: 0x3fe1203d, L:/172.23.0.4:48724 - R:couchbase/172.23.0.2:11210] Couchbase Server version 7.6.2-3721
+2025-01-15 17:50:08 INFO  DcpConnectHandler:114 - [id: 0x3fe1203d, L:/172.23.0.4:48724 - R:couchbase/172.23.0.2:11210] Negotiated features: [0x0006 (XATTR), 0x0007 (XERROR), 0x0008 (SELECT_BUCKET), 0x000a (SNAPPY), 0x000c (DUPLEX), 0x000d (CLUSTERMAP_CHANGE_NOTIFICATION), 0x0012 (COLLECTIONS)]
+2025-01-15 17:50:08 INFO  BucketConfigHandler:128 - [id: 0x3fe1203d, L:/172.23.0.4:48724 - R:couchbase/172.23.0.2:11210] Received bucket config from client request
+2025-01-15 17:50:08 INFO  reconfigure:212 - event []
+2025-01-15 17:50:08 INFO  DcpControlHandler:92 - DCP control negotiation complete for node couchbase/172.23.0.2:11210 ; [connection_buffer_size=134217728, set_noop_interval=20, enable_noop=true]
+2025-01-15 17:50:08 INFO  connect:212 - success [tag(remote=couchbase:11210)]
+2025-01-15 17:50:08 INFO  DcpChannel:218 - Connected to Node couchbase/172.23.0.2:11210
+2025-01-15 17:50:08 INFO  ElasticsearchConnector:245 - Bucket has 1024 partitions. Membership = 1/1. Assigned partitions: 0..1023
+2025-01-15 17:50:08 INFO  Client:871 - Initializing state from beginning to no end.
+2025-01-15 17:50:08 INFO  Client:608 - Starting to Stream for 1024 partitions: 0..1023
+2025-01-15 17:50:08 INFO  HttpServer:107 - HTTP server listening at http://localhost:31415
+2025-01-15 17:50:08 INFO  ElasticsearchConnector:285 - Prometheus metrics available at http://localhost:31415/metrics/prometheus
+2025-01-15 17:50:08 INFO  ElasticsearchConnector:286 - Dropwizard metrics available at http://localhost:31415/metrics/dropwizard?pretty
+2025-01-15 17:50:08 INFO  ElasticsearchConnector:291 - Elasticsearch connector startup complete.
+2025-01-15 17:50:23 INFO  SinkWriter:374 - Wrote 1 actions ~174 bytes in 114 ms
+2025-01-15 17:50:29 INFO  CheckpointService:99 - Saved connector state.
+2025-01-15 17:51:07 INFO  CheckpointService:121 - Getting current seqnos took 20.40 ms
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=cbes.backlog, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitMs, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitSeconds, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=cbes.writeQueue, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=dcp.connectionStatus{remote=couchbase:11210}, value=1.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=dcp.scheduledPollingTasks, value=1024.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=direct}, value=36.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=direct}, value=1.8464776E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=direct}, value=1.8464775E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.classesLoaded, value=9816.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcLiveDataSize, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcMaxDataSize, value=2.057306112E9
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Eden_Space}, value=5.4525952E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Old_Gen}, value=4.0894464E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Survivor_Space}, value=3145728.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-nmethods'}, value=2555904.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3604480.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.3893632E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Compressed_Class_Space}, value=6553600.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Metaspace}, value=5.111808E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Eden_Space}, value=-1.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Old_Gen}, value=2.057306112E9
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Survivor_Space}, value=-1.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-nmethods'}, value=5840896.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Compressed_Class_Space}, value=1.073741824E9
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Metaspace}, value=-1.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Eden_Space}, value=2097152.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Old_Gen}, value=2.6067456E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Survivor_Space}, value=2605832.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-nmethods'}, value=1373952.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3346944.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.1359872E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Compressed_Class_Space}, value=6345272.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Metaspace}, value=5.0703744E7
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsDaemon, value=54.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsLive, value=67.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsPeak, value=67.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=blocked}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=new}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=runnable}, value=18.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=terminated}, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=timed-waiting}, value=18.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=waiting}, value=31.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=processCpuUsage, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=systemCpuCount, value=8.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=systemCpuUsage, value=0.0
+2025-01-15 17:51:07 INFO  metrics:473 - type=GAUGE, name=systemLoadAverage1m, value=4.71
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.bulkRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.docRejected, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.docWriteRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.esConnFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.rejectionLogFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.saveStateFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=cbes.throughputBytes, count=174, m1_rate=1.4285597069468905, m5_rate=0.5033939231025594, m15_rate=0.18441614816057117, mean_rate=2.8948560565989427, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.addChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.bytesRead{remote=couchbase:11210}, count=979557, m1_rate=57161.74492742237, m5_rate=105758.3827108532, m15_rate=117390.37931881483, mean_rate=16552.623201238006, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_FAILOVER_LOG,remote=couchbase:11210,result=success}, count=1024, m1_rate=89.00571310224966, m5_rate=173.35945725759777, m15_rate=193.73249923210554, mean_rate=17.321555977565417, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_STREAM_REQUEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=89.00571310224966, m5_rate=173.35945725759777, m15_rate=193.73249923210554, mean_rate=17.413279745685838, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_COLLECTIONS_MANIFEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=89.00571310224966, m5_rate=173.35945725759777, m15_rate=193.73249923210554, mean_rate=17.41159572656187, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=OBSERVE_SEQNO,remote=couchbase:11210,result=success}, count=2194, m1_rate=100.35217437528466, m5_rate=176.8589806059287, m15_rate=194.9863820550391, mean_rate=37.343731826384726, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.connect{exception=none,remote=couchbase:11210,result=success}, count=1, m1_rate=0.08691964170141568, m5_rate=0.16929634497812282, m15_rate=0.18919189378135307, mean_rate=0.01689694501977248, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.disconnect{exception=none,remote=couchbase:11210,result=success}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.reconfigure, count=1, m1_rate=0.08691964170141568, m5_rate=0.16929634497812282, m15_rate=0.18919189378135307, mean_rate=0.01689363374281597, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.removeChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_DELETION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_EXPIRATION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_MUTATION,remote=couchbase:11210}, count=2036, m1_rate=19.746597779980128, m5_rate=6.089890038898867, m15_rate=2.181985120408065, mean_rate=34.40208506814725, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_NOOP,remote=couchbase:11210}, count=2, m1_rate=0.13376002644204985, m5_rate=0.1841119715010112, m15_rate=0.19453293636380453, mean_rate=0.05118125780925599, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SNAPSHOT_MARKER,remote=couchbase:11210}, count=3060, m1_rate=108.7523108822298, m5_rate=179.44934729649663, m15_rate=195.91448435251363, mean_rate=51.704126374177946, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SYSTEM_EVENT,remote=couchbase:11210}, count=3072, m1_rate=267.017139306749, m5_rate=520.0783717727933, m15_rate=581.1974976963166, mean_rate=52.24211490977504, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=jvm.classesUnloaded, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryAllocated, count=406847488, m1_rate=2.1834597943858404E7, m5_rate=4.253929392581942E7, m15_rate=4.7710669212182455E7, mean_rate=6767424.095078721, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryPromoted, count=14902784, m1_rate=859261.1875448278, m5_rate=1689606.8577691293, m15_rate=1897806.8611673408, mean_rate=247891.3676028713, rate_unit=events/second
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=cbes.bulkIndexPerDoc, count=1, min=7.0E-6, max=7.0E-6, mean=7.0E-6, stddev=0.0, p50=7.0E-6, p75=7.0E-6, p95=7.0E-6, p98=7.0E-6, p99=7.0E-6, p999=7.0E-6, m1_rate=0.00821011325831546, m5_rate=0.002893068523577929, m15_rate=0.0010598629204630525, mean_rate=0.016635677130364675, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=cbes.latency, count=1, min=116.924208, max=116.924208, mean=116.924208, stddev=0.0, p50=116.924208, p75=116.924208, p95=116.924208, p98=116.924208, p99=116.924208, p999=116.924208, m1_rate=0.00821011325831546, m5_rate=0.002893068523577929, m15_rate=0.0010598629204630525, mean_rate=0.016636678053501767, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=cbes.newIndexReq, count=1, min=0.791125, max=0.791125, mean=0.791125, stddev=0.0, p50=0.791125, p75=0.791125, p95=0.791125, p98=0.791125, p99=0.791125, p999=0.791125, m1_rate=0.008923605347491004, m5_rate=0.002941690389015272, m15_rate=0.0010657674340390601, mean_rate=0.016883174649951406, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=cbes.retryDelay, count=0, min=0.0, max=0.0, mean=0.0, stddev=0.0, p50=0.0, p75=0.0, p95=0.0, p98=0.0, p99=0.0, p999=0.0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Evacuation_Pause}, count=9, min=2.0, max=13.0, mean=5.4086333778456925, stddev=4.769197233677736, p50=2.0, p75=12.0, p95=13.0, p98=13.0, p99=13.0, p999=13.0, m1_rate=0.5387706218437985, m5_rate=1.021614449585213, m15_rate=1.1372770586486645, mean_rate=0.15082740766821892, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Preventive_Collection}, count=1, min=7.0, max=7.0, mean=7.0, stddev=0.0, p50=7.0, p75=7.0, p95=7.0, p98=7.0, p99=7.0, p999=7.0, m1_rate=0.08691964170141568, m5_rate=0.16929634497812282, m15_rate=0.18919189378135307, mean_rate=0.016720267482454972, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=GCLocker_Initiated_GC}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.08691964170141568, m5_rate=0.16929634497812282, m15_rate=0.18919189378135307, mean_rate=0.01677507265371029, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:51:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=Metadata_GC_Threshold}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.08691964170141568, m5_rate=0.16929634497812282, m15_rate=0.18919189378135307, mean_rate=0.01666981904919374, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  CheckpointService:121 - Getting current seqnos took 7.958 ms
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=cbes.backlog, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitMs, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitSeconds, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=cbes.writeQueue, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=dcp.connectionStatus{remote=couchbase:11210}, value=1.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=dcp.scheduledPollingTasks, value=1024.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=direct}, value=37.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=direct}, value=1.8472968E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=direct}, value=1.8472967E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.classesLoaded, value=9853.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcLiveDataSize, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcMaxDataSize, value=2.057306112E9
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Eden_Space}, value=5.5574528E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Old_Gen}, value=3.9845888E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Survivor_Space}, value=3145728.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-nmethods'}, value=2555904.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3604480.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.3893632E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Compressed_Class_Space}, value=6553600.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Metaspace}, value=5.1249152E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Eden_Space}, value=-1.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Old_Gen}, value=2.057306112E9
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Survivor_Space}, value=-1.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-nmethods'}, value=5840896.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Compressed_Class_Space}, value=1.073741824E9
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Metaspace}, value=-1.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Eden_Space}, value=1.9922944E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Old_Gen}, value=2.6067456E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Survivor_Space}, value=2642784.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-nmethods'}, value=1373952.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3524096.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.1600128E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Compressed_Class_Space}, value=6365680.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Metaspace}, value=5.0866624E7
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsDaemon, value=54.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsLive, value=67.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsPeak, value=67.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=blocked}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=new}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=runnable}, value=18.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=terminated}, value=0.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=timed-waiting}, value=18.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=waiting}, value=31.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=processCpuUsage, value=0.009574737910043964
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=systemCpuCount, value=8.0
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=systemCpuUsage, value=0.02106088781229526
+2025-01-15 17:52:07 INFO  metrics:473 - type=GAUGE, name=systemLoadAverage1m, value=4.84
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.bulkRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.docRejected, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.docWriteRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.esConnFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.rejectionLogFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.saveStateFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=cbes.throughputBytes, count=174, m1_rate=0.525537746671662, m5_rate=0.4121440857566382, m15_rate=0.17252259475684, mean_rate=1.4479681983061496, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.addChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.bytesRead{remote=couchbase:11210}, count=989893, m1_rate=21094.98367393468, m5_rate=86616.10224130633, m15_rate=109830.2956320464, mean_rate=8301.653988679205, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_FAILOVER_LOG,remote=couchbase:11210,result=success}, count=1024, m1_rate=32.74337199712134, m5_rate=141.93471899370323, m15_rate=181.23810625926725, mean_rate=8.592078717175756, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_STREAM_REQUEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=32.74337199712134, m5_rate=141.93471899370323, m15_rate=181.23810625926725, mean_rate=8.614568392380813, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_COLLECTIONS_MANIFEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=32.74337199712134, m5_rate=141.93471899370323, m15_rate=181.23810625926725, mean_rate=8.614150711122093, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_SEQNOS,remote=couchbase:11210,result=success}, count=2, m1_rate=0.07996993086896952, m5_rate=0.16649812252232055, m15_rate=0.18814374193356292, mean_rate=0.03327224835840594, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=OBSERVE_SEQNO,remote=couchbase:11210,result=success}, count=2194, m1_rate=36.91750182951888, m5_rate=144.7998863800962, m15_rate=182.41112239853274, mean_rate=18.46573574033825, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.connect{exception=none,remote=couchbase:11210,result=success}, count=1, m1_rate=0.03197594921593881, m5_rate=0.1386081240172883, m15_rate=0.17699033814381568, mean_rate=0.008386062165923852, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.disconnect{exception=none,remote=couchbase:11210,result=success}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.reconfigure, count=1, m1_rate=0.03197594921593881, m5_rate=0.1386081240172883, m15_rate=0.17699033814381568, mean_rate=0.008385252178991503, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.removeChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_DELETION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_EXPIRATION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_MUTATION,remote=couchbase:11210}, count=2036, m1_rate=7.264367356336337, m5_rate=4.98598025770977, m15_rate=2.0412623213767986, mean_rate=17.074025564654157, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_NOOP,remote=couchbase:11210}, count=5, m1_rate=0.07939256576338395, m5_rate=0.1597248201393426, m15_rate=0.18520256457105766, mean_rate=0.05043367242282498, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SNAPSHOT_MARKER,remote=couchbase:11210}, count=3060, m1_rate=40.007739353457694, m5_rate=146.920699251413, m15_rate=183.27936858064402, mean_rate=25.661221324750016, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SYSTEM_EVENT,remote=couchbase:11210}, count=3072, m1_rate=98.23011599136404, m5_rate=425.80415698110977, m15_rate=543.7143187778019, mean_rate=25.84415958105171, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=jvm.classesUnloaded, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryAllocated, count=458227712, m1_rate=8672383.578847622, m5_rate=3.4989792643641464E7, m15_rate=4.468965417444526E7, mean_rate=3812795.2502165027, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryPromoted, count=14902784, m1_rate=316104.5254943013, m5_rate=1383333.095067042, m15_rate=1775411.5748629763, mean_rate=124002.66439512711, rate_unit=events/second
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=cbes.bulkIndexPerDoc, count=1, min=7.0E-6, max=7.0E-6, mean=7.0E-6, stddev=0.0, p50=7.0E-6, p75=7.0E-6, p95=7.0E-6, p98=7.0E-6, p99=7.0E-6, p999=7.0E-6, m1_rate=0.0030203318774233434, m5_rate=0.0023686441710151626, m15_rate=9.915091652691948E-4, mean_rate=0.008321296698110287, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=cbes.latency, count=1, min=116.924208, max=116.924208, mean=116.924208, stddev=0.0, p50=116.924208, p75=116.924208, p95=116.924208, p98=116.924208, p99=116.924208, p999=116.924208, m1_rate=0.0030203318774233434, m5_rate=0.0023686441710151626, m15_rate=9.915091652691948E-4, mean_rate=0.008321540706643557, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=cbes.newIndexReq, count=1, min=0.791125, max=0.791125, mean=0.791125, stddev=0.0, p50=0.791125, p75=0.791125, p95=0.791125, p98=0.791125, p99=0.791125, p999=0.791125, m1_rate=0.0032828109484694876, m5_rate=0.002408452387520735, m15_rate=9.97032878962764E-4, mean_rate=0.008382756618865665, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=cbes.retryDelay, count=0, min=0.0, max=0.0, mean=0.0, stddev=0.0, p50=0.0, p75=0.0, p95=0.0, p98=0.0, p99=0.0, p999=0.0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Evacuation_Pause}, count=10, min=2.0, max=13.0, mean=5.586109728666271, stddev=3.999071492558317, p50=6.0, p75=6.0, p95=13.0, p98=13.0, p99=13.0, p999=13.0, m1_rate=0.21813286628201006, m5_rate=0.8423764747672321, m15_rate=1.0660687643037383, mean_rate=0.0835192921309567, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Preventive_Collection}, count=1, min=7.0, max=7.0, mean=7.0, stddev=0.0, p50=7.0, p75=7.0, p95=7.0, p98=7.0, p99=7.0, p999=7.0, m1_rate=0.03197594921593881, m5_rate=0.1386081240172883, m15_rate=0.17699033814381568, mean_rate=0.008342391852021997, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=GCLocker_Initiated_GC}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.03197594921593881, m5_rate=0.1386081240172883, m15_rate=0.17699033814381568, mean_rate=0.008356008181746338, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:52:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=Metadata_GC_Threshold}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.02941929347859539, m5_rate=0.1363171332387696, m15_rate=0.17600978476883422, mean_rate=0.008329813150478111, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  CheckpointService:121 - Getting current seqnos took 6.926 ms
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=cbes.backlog, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitMs, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitSeconds, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=cbes.writeQueue, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=dcp.connectionStatus{remote=couchbase:11210}, value=1.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=dcp.scheduledPollingTasks, value=1024.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=direct}, value=37.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=direct}, value=1.8472968E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=direct}, value=1.8472967E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.classesLoaded, value=9853.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcLiveDataSize, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcMaxDataSize, value=2.057306112E9
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Eden_Space}, value=5.6623104E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Old_Gen}, value=3.8797312E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Survivor_Space}, value=3145728.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-nmethods'}, value=2555904.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3604480.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.3893632E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Compressed_Class_Space}, value=6553600.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Metaspace}, value=5.1380224E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Eden_Space}, value=-1.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Old_Gen}, value=2.057306112E9
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Survivor_Space}, value=-1.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-nmethods'}, value=5840896.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Compressed_Class_Space}, value=1.073741824E9
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Metaspace}, value=-1.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Eden_Space}, value=3.5651584E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Old_Gen}, value=2.6067456E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Survivor_Space}, value=2546752.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-nmethods'}, value=1373952.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3572224.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.1777024E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Compressed_Class_Space}, value=6365680.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Metaspace}, value=5.0962504E7
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsDaemon, value=53.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsLive, value=66.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsPeak, value=67.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=blocked}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=new}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=runnable}, value=18.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=terminated}, value=0.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=timed-waiting}, value=18.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=waiting}, value=30.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=processCpuUsage, value=0.008804155054471751
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=systemCpuCount, value=8.0
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=systemCpuUsage, value=0.02083040724540977
+2025-01-15 17:53:07 INFO  metrics:473 - type=GAUGE, name=systemLoadAverage1m, value=4.88
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.bulkRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.docRejected, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.docWriteRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.esConnFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.rejectionLogFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.saveStateFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=cbes.throughputBytes, count=174, m1_rate=0.19333453256007016, m5_rate=0.33743503770816874, m15_rate=0.16139609247080292, mean_rate=0.965442664613095, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.addChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.bytesRead{remote=couchbase:11210}, count=1000229, m1_rate=7826.763699137794, m5_rate=70943.72853684431, m15_rate=102757.78453565095, mean_rate=5578.522555238726, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_FAILOVER_LOG,remote=couchbase:11210,result=success}, count=1024, m1_rate=12.045613392369663, m5_rate=116.20631936962637, m15_rate=169.54951435944704, mean_rate=5.7130424408739024, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_STREAM_REQUEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=12.045613392369663, m5_rate=116.20631936962637, m15_rate=169.54951435944704, mean_rate=5.722982795926632, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_COLLECTIONS_MANIFEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=12.045613392369663, m5_rate=116.20631936962637, m15_rate=169.54951435944704, mean_rate=5.722795355902407, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_SEQNOS,remote=couchbase:11210,result=success}, count=3, m1_rate=0.0358133361132764, m5_rate=0.13906910514549375, m15_rate=0.1770521296960736, mean_rate=0.02496473777348731, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=OBSERVE_SEQNO,remote=couchbase:11210,result=success}, count=2194, m1_rate=13.581189942489114, m5_rate=118.55212002158244, m15_rate=170.64687915128468, mean_rate=12.265608381364626, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.connect{exception=none,remote=couchbase:11210,result=success}, count=1, m1_rate=0.011763294328486, m5_rate=0.11348273375940075, m15_rate=0.1655756976166475, mean_rate=0.005577089375498586, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.disconnect{exception=none,remote=couchbase:11210,result=success}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.reconfigure, count=1, m1_rate=0.011763294328486, m5_rate=0.11348273375940075, m15_rate=0.1655756976166475, mean_rate=0.005576723875167637, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.removeChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_DELETION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_EXPIRATION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_MUTATION,remote=couchbase:11210}, count=2036, m1_rate=2.672411403513082, m5_rate=4.082175371226671, m15_rate=1.9096151599298503, mean_rate=11.354933249854259, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_NOOP,remote=couchbase:11210}, count=8, m1_rate=0.05939189471100598, m5_rate=0.13975830933957703, m15_rate=0.17647393658600097, mean_rate=0.05025134709998485, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SNAPSHOT_MARKER,remote=couchbase:11210}, count=3060, m1_rate=14.71802479588275, m5_rate=120.2884947408531, m15_rate=171.45912951937686, mean_rate=17.065822589600113, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SYSTEM_EVENT,remote=couchbase:11210}, count=3072, m1_rate=36.13684017710899, m5_rate=348.6189581088792, m15_rate=508.648543078341, mean_rate=17.16910568687065, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=jvm.classesUnloaded, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryAllocated, count=510656512, m1_rate=3698903.9448894723, m5_rate=2.880404060676037E7, m15_rate=4.18636718376484E7, mean_rate=2833183.1416199724, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryPromoted, count=14902784, m1_rate=116288.35619060758, m5_rate=1132577.3466819348, m15_rate=1660909.929590299, mean_rate=82682.66401890058, rate_unit=events/second
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=cbes.bulkIndexPerDoc, count=1, min=7.0E-6, max=7.0E-6, mean=7.0E-6, stddev=0.0, p50=7.0E-6, p75=7.0E-6, p95=7.0E-6, p98=7.0E-6, p99=7.0E-6, p999=7.0E-6, m1_rate=0.0011111180032187934, m5_rate=0.0019392818259090158, m15_rate=9.275637498322004E-4, mean_rate=0.005548367459333437, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=cbes.latency, count=1, min=116.924208, max=116.924208, mean=116.924208, stddev=0.0, p50=116.924208, p75=116.924208, p95=116.924208, p98=116.924208, p99=116.924208, p999=116.924208, m1_rate=0.0011111180032187934, m5_rate=0.0019392818259090158, m15_rate=9.275637498322004E-4, mean_rate=0.005548476009772048, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=cbes.newIndexReq, count=1, min=0.791125, max=0.791125, mean=0.791125, stddev=0.0, p50=0.791125, p75=0.791125, p95=0.791125, p98=0.791125, p99=0.791125, p999=0.791125, m1_rate=0.0012076786571944484, m5_rate=0.001971874036987314, m15_rate=9.327312225758489E-4, mean_rate=0.005575618479130016, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=cbes.retryDelay, count=0, min=0.0, max=0.0, mean=0.0, stddev=0.0, p50=0.0, p75=0.0, p95=0.0, p98=0.0, p99=0.0, p999=0.0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Evacuation_Pause}, count=11, min=2.0, max=13.0, mean=6.852129614315906, stddev=3.575062751973081, p50=9.0, p75=9.0, p95=12.0, p98=13.0, p99=13.0, p999=13.0, m1_rate=0.09078859104651289, m5_rate=0.6927209248800245, m15_rate=0.9983924508570409, mean_rate=0.06118160868257612, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Preventive_Collection}, count=1, min=7.0, max=7.0, mean=7.0, stddev=0.0, p50=7.0, p75=7.0, p95=7.0, p98=7.0, p99=7.0, p999=7.0, m1_rate=0.011763294328486, m5_rate=0.11348273375940075, m15_rate=0.1655756976166475, mean_rate=0.005557727098537885, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=GCLocker_Initiated_GC}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.011763294328486, m5_rate=0.11348273375940075, m15_rate=0.1655756976166475, mean_rate=0.005563767599319421, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:53:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=Metadata_GC_Threshold}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.010822753244564338, m5_rate=0.11160702915400941, m15_rate=0.16465838308515604, mean_rate=0.005552141370384179, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  CheckpointService:121 - Getting current seqnos took 5.085 ms
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=cbes.backlog, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitMs, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=cbes.esWaitSeconds, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=cbes.writeQueue, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=dcp.connectionStatus{remote=couchbase:11210}, value=1.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=dcp.scheduledPollingTasks, value=1024.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=direct}, value=37.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferCount{id=mapped}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=direct}, value=1.8472968E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferMemoryUsed{id=mapped}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=direct}, value=1.8472967E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped_-_'non-volatile_memory'}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.bufferTotalCapacity{id=mapped}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.classesLoaded, value=9853.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcLiveDataSize, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.gcMaxDataSize, value=2.057306112E9
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Eden_Space}, value=5.6623104E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Old_Gen}, value=3.8797312E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=heap,id=G1_Survivor_Space}, value=3145728.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-nmethods'}, value=2555904.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3670016.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.3893632E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Compressed_Class_Space}, value=6553600.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryCommitted{area=nonheap,id=Metaspace}, value=5.144576E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Eden_Space}, value=-1.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Old_Gen}, value=2.057306112E9
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=heap,id=G1_Survivor_Space}, value=-1.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-nmethods'}, value=5840896.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.22908672E8
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Compressed_Class_Space}, value=1.073741824E9
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryMax{area=nonheap,id=Metaspace}, value=-1.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Eden_Space}, value=4.9283072E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Old_Gen}, value=2.6067456E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=heap,id=G1_Survivor_Space}, value=2557360.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-nmethods'}, value=1373952.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'non-profiled_nmethods'}, value=3642752.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=CodeHeap_'profiled_nmethods'}, value=1.1998592E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Compressed_Class_Space}, value=6365680.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.memoryUsed{area=nonheap,id=Metaspace}, value=5.0998E7
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsDaemon, value=53.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsLive, value=66.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsPeak, value=67.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=blocked}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=new}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=runnable}, value=18.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=terminated}, value=0.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=timed-waiting}, value=18.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=jvm.threadsStates{state=waiting}, value=30.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=processCpuUsage, value=0.008938948881046469
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=systemCpuCount, value=8.0
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=systemCpuUsage, value=0.020453598568661507
+2025-01-15 17:54:07 INFO  metrics:473 - type=GAUGE, name=systemLoadAverage1m, value=4.88
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.bulkRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.docRejected, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.docWriteRetry, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.esConnFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.rejectionLogFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.saveStateFail, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=cbes.throughputBytes, count=174, m1_rate=0.07112379979734068, m5_rate=0.27626844253770627, m15_rate=0.15098717186324492, mean_rate=0.7241536462285739, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.addChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.bytesRead{remote=couchbase:11210}, count=1010565, m1_rate=2945.658349469745, m5_rate=58112.27421127055, m15_rate=96141.40100325941, mean_rate=4222.082153832012, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_FAILOVER_LOG,remote=couchbase:11210,result=success}, count=1024, m1_rate=4.431333523352196, m5_rate=95.14168736991468, m15_rate=158.61475499198127, mean_rate=4.279306808389894, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=DCP_STREAM_REQUEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=4.431333523352196, m5_rate=95.14168736991468, m15_rate=158.61475499198127, mean_rate=4.284881232142697, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_COLLECTIONS_MANIFEST,remote=couchbase:11210,result=success}, count=1024, m1_rate=4.431333523352196, m5_rate=95.14168736991468, m15_rate=158.61475499198127, mean_rate=4.284775605283185, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=GET_SEQNOS,remote=couchbase:11210,result=success}, count=4, m1_rate=0.019569032710518172, m5_rate=0.1166121250923753, m15_rate=0.16667584897264012, mean_rate=0.02219489528169938, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.clientRequest{exception=none,opcode=OBSERVE_SEQNO,remote=couchbase:11210,result=success}, count=2194, m1_rate=4.996240566486112, m5_rate=97.06226650426146, m15_rate=159.64134741987314, mean_rate=9.18275653755755, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.connect{exception=none,remote=couchbase:11210,result=success}, count=1, m1_rate=0.004327474143898629, m5_rate=0.0929118040721823, m15_rate=0.1548972216718567, mean_rate=0.004177861190160147, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.disconnect{exception=none,remote=couchbase:11210,result=success}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.reconfigure, count=1, m1_rate=0.004327474143898629, m5_rate=0.0929118040721823, m15_rate=0.1548972216718567, mean_rate=0.00417766432841043, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.removeChannel, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_DELETION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_EXPIRATION,remote=couchbase:11210}, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_MUTATION,remote=couchbase:11210}, count=2036, m1_rate=0.9831252137045831, m5_rate=3.3422025158808024, m15_rate=1.7864583208366442, mean_rate=8.506101978895629, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_NOOP,remote=couchbase:11210}, count=11, m1_rate=0.05203405902120332, m5_rate=0.12341111291614525, m15_rate=0.16830824413623804, mean_rate=0.05017059428887113, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SNAPSHOT_MARKER,remote=couchbase:11210}, count=3060, m1_rate=5.41445873705678, m5_rate=98.48388988579555, m15_rate=160.40121331281787, mean_rate=12.78420984726709, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=dcp.serverRequest{opcode=DCP_SYSTEM_EVENT,remote=couchbase:11210}, count=3072, m1_rate=13.294000570056593, m5_rate=285.4250621097441, m15_rate=475.84426497594376, mean_rate=12.854736663561217, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=jvm.classesUnloaded, count=0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryAllocated, count=564133888, m1_rate=1799806.0299103041, m5_rate=2.3737467570890833E7, m15_rate=3.922043611109755E7, mean_rate=2347688.686782055, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=METER, name=jvm.gcMemoryPromoted, count=14902784, m1_rate=42780.09549014637, m5_rate=927275.903967963, m15_rate=1553792.8406400967, mean_rate=62019.267118240765, rate_unit=events/second
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=cbes.bulkIndexPerDoc, count=1, min=7.0E-6, max=7.0E-6, mean=7.0E-6, stddev=0.0, p50=7.0E-6, p75=7.0E-6, p95=7.0E-6, p98=7.0E-6, p99=7.0E-6, p999=7.0E-6, m1_rate=4.0875747009965884E-4, m5_rate=0.0015877496697569325, m15_rate=8.677423670301432E-4, mean_rate=0.004161719246888545, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=cbes.latency, count=1, min=116.924208, max=116.924208, mean=116.924208, stddev=0.0, p50=116.924208, p75=116.924208, p95=116.924208, p98=116.924208, p99=116.924208, p999=116.924208, m1_rate=4.0875747009965884E-4, m5_rate=0.0015877496697569325, m15_rate=8.677423670301432E-4, mean_rate=0.004161783378452649, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=cbes.newIndexReq, count=1, min=0.791125, max=0.791125, mean=0.791125, stddev=0.0, p50=0.791125, p75=0.791125, p95=0.791125, p98=0.791125, p99=0.791125, p999=0.791125, m1_rate=4.442801495233718E-4, m5_rate=0.001614433915277544, m15_rate=8.72576573876787E-4, mean_rate=0.004177037685163299, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=cbes.retryDelay, count=0, min=0.0, max=0.0, mean=0.0, stddev=0.0, p50=0.0, p75=0.0, p95=0.0, p98=0.0, p99=0.0, p999=0.0, m1_rate=0.0, m5_rate=0.0, m15_rate=0.0, mean_rate=0.0, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Evacuation_Pause}, count=12, min=2.0, max=13.0, mean=8.201762459600227, stddev=3.119008835706686, p50=10.0, p75=10.0, p95=12.0, p98=13.0, p99=13.0, p999=13.0, m1_rate=0.04232286148642479, m5_rate=0.5700936148889137, m15_rate=0.9350688790136367, mean_rate=0.05003245263293025, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=G1_Preventive_Collection}, count=1, min=7.0, max=7.0, mean=7.0, stddev=0.0, p50=7.0, p75=7.0, p95=7.0, p98=7.0, p99=7.0, p999=7.0, m1_rate=0.004327474143898629, m5_rate=0.0929118040721823, m15_rate=0.1548972216718567, mean_rate=0.004166990335748488, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=GCLocker_Initiated_GC}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.004327474143898629, m5_rate=0.0929118040721823, m15_rate=0.1548972216718567, mean_rate=0.004170384093023337, rate_unit=events/second, duration_unit=milliseconds
+2025-01-15 17:54:07 INFO  metrics:473 - type=TIMER, name=jvm.gcPause{action=end_of_minor_GC,cause=Metadata_GC_Threshold}, count=1, min=2.0, max=2.0, mean=2.0, stddev=0.0, p50=2.0, p75=2.0, p95=2.0, p98=2.0, p99=2.0, p999=2.0, m1_rate=0.003981468415546746, m5_rate=0.09137610702805841, m15_rate=0.15403906752017543, mean_rate=0.004163846256050015, rate_unit=events/second, duration_unit=milliseconds

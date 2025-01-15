@@ -1,0 +1,50 @@
+[group]
+  name = "news-app"
+
+[group.static]
+ memberNumber = 1
+ totalMembers = 1
+
+[metrics]
+ httpPort = 31415
+ logInterval = '1m'
+
+[couchbase]
+ hosts = ['couchbase://couchbase:8091']
+ network = 'auto'
+ username = "admin"
+ pathToPassword = "/opt/couchbase-elasticsearch-connector/config/password.toml"
+ secureConnection = false
+ bucket = "news"
+
+[couchbase.dcp]
+ compression = true
+ flowControlBuffer = '128mb'
+ persistencePollingInterval = '100ms'
+
+[elasticsearch]
+ hosts = ['http://elasticsearch:9200']
+ username = ''
+ pathToPassword = "/opt/couchbase-elasticsearch-connector/config/password2.toml"
+
+[elasticsearch.bulkRequestLimits]
+ actions = 2000
+ bytes = "20mb"
+ concurrentRequests = 10
+
+[elasticsearch.docStructure]
+ metadataFieldName = ''
+ documentContentAtTopLevel = true
+ wrapCounters = false
+
+[elasticsearch.typeDefaults]
+ index = "news"
+ pipeline = ''
+ typeName = '_doc'
+ ignore = false
+ ignoreDeletes = false
+
+[[elasticsearch.type]]
+ prefix = ''
+ index = 'news'
+ pipeline = 'news-transform-pipeline'
